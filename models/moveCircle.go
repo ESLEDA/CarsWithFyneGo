@@ -2,9 +2,7 @@ package models
 
 import (
 	"fmt"
-	"math/rand"
-	"time"
-
+	
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/canvas"
 	"fyne.io/fyne/v2/widget"
@@ -44,40 +42,14 @@ func ResetPositions() {
 	Circle3.Move(fyne.NewPos(Startt, Heightt/2-Radiuss))   // posición inicial del carril 3
 }
 
-func MoveCircle1() {
-	rand.Seed(time.Now().UnixNano()) // semilla aleatoria 
-	speed := rand.Intn(20) + 1       // velocidad aleatoria entre 1 y 20
-	for Circle1.Position().X < Finishh-Radiuss {
-		time.Sleep(time.Millisecond * time.Duration(speed))     // esperar un tiempo proporcional a la velocidad
-		Circle1.Move(Circle1.Position().Add(fyne.NewPos(1, 0))) // mover el círculo un pixel a la derecha
-	}
-	CheckWinner(1) // comprobar si el círculo del carril 1 ha ganado
-	//el tres puedo mandar un str y debo cambiar linea 82 x un str
-}
 
-func MoveCircle2() {
-	rand.Seed(time.Now().UnixNano()) // s aleatoria 
-	vdRandom := rand.Intn(20) + 1       // velocidad aleatoria entre 1 y 20
-	for Circle2.Position().X < Finishh-Radiuss {
-		time.Sleep(time.Millisecond * time.Duration(vdRandom))     // esperar un tiempo proporcional a la velocidad
-		Circle2.Move(Circle2.Position().Add(fyne.NewPos(1, 0))) // mover el círculo un pixel a la derecha
-	}
-	CheckWinner(2) // comprobar si el círculo del carril 2 ha ganado
-}
+
+
 
 //pendiente add a 3rd car
 //buscar imagen 
+ 
 
-func MoveCircle3() {
-	rand.Seed(time.Now().UnixNano()) // s aleatoria 
-	vdRandom := rand.Intn(20) + 1       // velocidad aleatoria entre 1 y 20
-	for Circle3.Position().X < Finishh-Radiuss {
-		time.Sleep(time.Millisecond * time.Duration(vdRandom))     // esperar un tiempo proporcional a la velocidad
-		Circle3.Move(Circle3.Position().Add(fyne.NewPos(1, 0))) // mover el círculo un pixel a la derecha
-	}
-	CheckWinner(3) // comprobar si el círculo del carril 3 ha ganado
-	//el tres puedo mandar un str y debo cambiar linea 82 x un str
-}
 
 func CheckWinner(lane int) {
 	if Labell.Text == "" { // si la etiqueta está vacía, significa que nadie ha ganado todavía
